@@ -78,7 +78,6 @@ public class WelcomeActivity extends AppCompatActivity implements ViewInterface 
     @Override
     public void setData(List<ItemData> dataList) {
         recycleAdapter.setData(dataList);
-        this.datas=dataList;
         viewPagerAdapter.setData(dataList);
         viewPagerAdapter.notifyDataSetChanged();
         recycleAdapter.notifyDataSetChanged();

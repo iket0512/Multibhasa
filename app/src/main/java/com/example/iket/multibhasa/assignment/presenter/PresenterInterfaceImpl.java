@@ -21,6 +21,7 @@ public class PresenterInterfaceImpl implements PresenterInterface {
     @Override
     public void requestData() {
         viewInterface.showProgressBar(true);
+
         providerInterface.requestData(new Callback() {
             @Override
             public void onSuccess(ListData listData) {

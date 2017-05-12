@@ -22,18 +22,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitProvider implements ProviderInterface {
 
-
     @Override
     public void requestData(final Callback callback) {
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://api.myjson.com/bins/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
 
         AssignmentApi assignmentApi=retrofit.create(AssignmentApi.class);
@@ -49,6 +48,5 @@ public class RetrofitProvider implements ProviderInterface {
                 t.printStackTrace();
             }
         });
-
     }
 }
